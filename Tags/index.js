@@ -28,6 +28,7 @@ const Tags = React.forwardRef((props, ref) => {
 		initialTags = [],
 		initialText,
 		onChangeTags = () => {},
+		onEnterPress = () => {},
 	} = props
 	const [tags, setTags] = useState(initialTags)
 	const [text, setText] = useState(initialText)
@@ -92,7 +93,13 @@ const Tags = React.forwardRef((props, ref) => {
 			})}
 
 			{!readonly && maxNumberOfTags > tags.length && (
-				<Input value={text} onChangeText={onChangeText} onKeyPress={onKeyPress} {...props} />
+				<Input
+					value={text}
+					onChangeText={onChangeText}
+					onKeyPress={onKeyPress}
+					onSubmitEditing={onEnterPress}
+					{...props}
+				/>
 			)}
 		</View>
 	)
